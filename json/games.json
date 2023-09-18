@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "64eb0a7076cbf540b7186d06"
+  },
+  "title": "Super mario bros",
+  "info": "The best super mario game ever",
+  "price": 80,
+  "year": 1985,
+  "img_url": "https://images.pexels.com/photos/3162044/pexels-photo-3162044.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "category": "General",
+  "user_id": "64eaf6100fcce6f62835475a",
+  "createdAt": {
+    "$date": "2023-08-27T08:33:52.899Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-27T08:33:52.899Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64eb0c6676cbf540b7186d08"
+  },
+  "title": "TETRIS",
+  "info": "The best Puzzle game ever",
+  "price": 80,
+  "year": 1986,
+  "img_url": "https://images.pexels.com/photos/10599435/pexels-photo-10599435.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "category": "General",
+  "user_id": "64eaf6100fcce6f62835475a",
+  "createdAt": {
+    "$date": "2023-08-27T08:42:14.062Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-27T08:42:14.062Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64eb0ca576cbf540b7186d0a"
+  },
+  "title": "FORZA 5",
+  "info": "The best racing game in pc",
+  "price": 150,
+  "year": 2020,
+  "img_url": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "category": "General",
+  "user_id": "64eaf6100fcce6f62835475a",
+  "createdAt": {
+    "$date": "2023-08-27T08:43:17.538Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-27T08:57:15.157Z"
+  },
+  "__v": 0
+}]
