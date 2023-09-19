@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     const limit = 10;
     const data = await ToyModel.find({})
       .limit(limit)
-      .skip(pageQ * limit);
+      .skip(pageQ * limit).sort({name:-1});
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -22,7 +22,7 @@ router.get("/specify/", async (req, res) => {
   try {
     const nameQ = req.query.name;
     const infoQ = req.query.info;
-    const data = await ToyModel.find({$or:[{name:nameQ},{info:infoQ}]})
+    const data = await ToyModel.find({$or:[{name:nameQ},{info:infoQ}]}).sort({name:1})
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -33,7 +33,7 @@ router.get("/specify/", async (req, res) => {
 router.get("/category/", async (req, res) => {
   try {
     const catQ = req.query.catname;
-    const data = await ToyModel.find({ category: catQ });
+    const data = await ToyModel.find({ category: catQ }).sort({name:1});
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -87,7 +87,7 @@ router.get("/prices",async(req,res)=>{
   try{
     const min=req.query.min;
     const max=req.query.max;
-    const data=await ToyModel.find({"price":{$gt:min},"price":{$lt:max}})
+    const data=await ToyModel.find({"price":{$gt:min},"price":{$lt:max}}).sort({name:1})
     res.json(data)
   }
   catch(err){
