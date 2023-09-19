@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     const limit = 10;
     const data = await ToyModel.find({})
       .limit(limit)
-      .skip(pageQ * limit).sort({name:1});
+      .skip(pageQ * limit).sort({name:-1});
     res.json(data);
   } catch (err) {
     console.log(err);
