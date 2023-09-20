@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const data = await ToyModel.find({})
       .limit(limit)
       .skip(pageQ * limit)
-      .sort({ name: -1 });
+      .sort({ name: 1 });
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -21,19 +21,15 @@ router.get("/", async (req, res) => {
 //b
 router.get("/specify/", async (req, res) => {
   try {
+    const limit = 10;
+    const page = req.query.page - 1 || 0;
     let filteFind = {};
-
     if (req.query.s) {
       const searchExp = new RegExp(req.query.s, "i");
       filteFind = { $or: [{ name: searchExp }, { info: searchExp }] };
     }
-
-    // const nameQ = req.query.name;
-    // const infoQ = req.query.info;
-    // const data = await ToyModel.find({$or:[{name:nameQ},{info:infoQ}]}).sort({name:1})
-    // res.json(data);
-
-    const data = await ToyModel.find(filteFind);
+    const data = await ToyModel.find(filteFind).limit(limit)
+    .skip(page * limit);
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -43,13 +39,15 @@ router.get("/specify/", async (req, res) => {
 //c
 router.get("/category/", async (req, res) => {
   try {
+    const limit = 10;
+    const page = req.query.page - 1 || 0;
     let filteFind = {};
     if (req.query.category) {
       const searchExp = new RegExp(req.query.category, "i");
       filteFind = {category:searchExp}
     }
-    const catQ = req.query.catname;
-    const data = await ToyModel.find(filteFind).sort({ name: 1 });
+    const data = await ToyModel.find(filteFind).sort({ name: 1 }).limit(limit)
+    .skip(page * limit);
     res.json(data);
   } catch (err) {
     console.log(err);
