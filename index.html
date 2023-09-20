@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toy API Documentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #5e5e5e60;
+      }
+      h1 {
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        width: 400px;
+      }
+      h2 {
+        color: #003655;
+        margin-top: 20px;
+      }
+      h3 {
+        color: #5978bd;
+      }
+      p {
+        color: #777;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      code {
+        font-family: Monaco, monospace;
+        color: #333;
+      }
+      a {
+        color: #1d4369;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .endpoint-link {
+        background-color: #35485c;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: background-color 0.2s;
+      }
+      .endpoint-link:hover {
+        background-color: #0054a0;
+      }
+      .example-section {
+        margin-top: 20px;
+      }
+      .example {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Toy API Documentation</h1>
+    <p>Documentation for the Toy API endpoints.</p>
+
+    <h2>Base URL</h2>
+    <pre>
+        <code>https://clock.cyclic.cloud</code>
+    </pre>
+
+    <h2>Endpoints</h2>
+
+    <h2>GET Requests</h2>
+
+    <h3>Get All Toys</h3>
+    <pre>
+        <code>GET <a class="endpoint-link" id="getAllToysLink" href="#">/toys</a></code>
+    </pre>
+    <p>Returns a list of all toys.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>GET http://localhost:3001/toys</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+            {
+                "_id": {
+                  "$oid": "65088de4787d464475e7ef70"
+                },
+                "name": "Fisher-Price Laugh & Learn Smart Stages Chair",
+                "info": "An interactive chair with songs, phrases, and activities for toddlers.",
+                "category": "Learning & Educational Toys",
+                "img_url": "https://example.com/fisher_price_chair.jpg",
+                "price": 29.99,
+                "user_id": "65088bc2fe2865d1b6d70a73",
+                "createdAt": {
+                  "$date": "2023-09-18T17:50:28.352Z"
+                },
+                "updatedAt": {
+                  "$date": "2023-09-18T17:50:28.352Z"
+                },
+                "__v": 0
+              },
+            </pre
+        >
+      </div>
+    </div>
+
+    <h3>Search by Name or Info</h3>
+    <pre>
+        <code>GET <a class="endpoint-link" id="searchByNameInfoLink" href="#">/toys/specify/?s={name or info}&page={pageNumber}</a></code>
+    </pre>
+    <p>Search for toys by name or info.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code
+          >GET http://localhost:3001/toys/specify/?name=Toy1&info=Info1</code
+        >
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+[
+    {
+        "_id": "123456",
+        "name": "Toy1",
+        "info": "Info1"
+    }
+]
+            </pre
+        >
+      </div>
+    </div>
+
+    <h3>Get Toys by Category</h3>
+    <pre>
+        <code>GET <a class="endpoint-link" id="getToysByCategoryLink" href="#">/toys/category/?category={categoryName}&page={pageNumber}</a></code>
+    </pre>
+    <p>Get toys by category.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>GET http://localhost:3001/toys/category/?catname=Category1</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+[
+    {
+        "_id": "123456",
+        "name": "Toy2",
+        "category": "Category1"
+    },
+    {
+        "_id": "789012",
+        "name": "Toy3",
+        "category": "Category1"
+    }
+]
+            </pre
+        >
+      </div>
+    </div>
+
+    <h3>Filter by Price Range</h3>
+    <pre>
+        <code>GET <a class="endpoint-link" id="filterByPriceRangeLink" href="#">/toys/prices/?min={minPrice}&max={maxPrice}</a></code>
+    </pre>
+    <p>Filter toys by price range.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>GET http://localhost:3001/toys/prices/?min=20&max=50</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+[
+    {
+        "_id": "123456",
+        "name": "Toy4",
+        "price": 30
+    },
+    {
+        "_id": "789012",
+        "name": "Toy5",
+        "price": 40
+    }
+]
+            </pre
+        >
+      </div>
+    </div>
+
+    <h3>Get Toy by ID</h3>
+    <pre>
+        <code>GET <a class="endpoint-link" id="getToyByIdLink" href="#">/toys/{id}</a></code>
+    </pre>
+    <p>Get a toy by its ID.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>GET http://localhost:3001/toys/123456</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+{
+    "_id": "123456",
+    "name": "Toy6",
+    "info": "Info6"
+}
+            </pre
+        >
+      </div>
+    </div>
+    <h2>POST Requests</h2>
+
+    <h3>Create a New Toy</h3>
+    <pre>
+        <code>POST <a class="endpoint-link" id="createNewToyLink" href="#">/toys</a></code>
+    </pre>
+    <p>Create a new toy. Requires authentication.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>POST http://localhost:3001/toys</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+{
+    "_id": "123456",
+    "name": "New Toy",
+    "info": "New Toy Info",
+    "img_url":"https://img_url"
+}
+
+            </pre
+        >
+      </div>
+      <p>img_url is not a must</p>
+    </div>
+    <h2>PUT Requests</h2>
+
+    <h3>Update a Toy</h3>
+    <pre>
+        <code>PUT <a class="endpoint-link" id="updateToyLink" href="#">/toys/{id}</a></code>
+    </pre>
+    <p>Update a toy by ID. Requires authentication.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>PUT http://localhost:3001/toys/123456</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Body:</h3>
+
+      <pre>
+            {
+                "_id": "123456",
+                "name": "New Toy",
+                "info": "New Toy Info",
+                "img_url":"https://img_url"
+            }
+            
+                        </pre
+      >
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+{
+    "message": "Toy updated successfully"
+}
+            </pre
+        >
+      </div>
+    </div>
+
+    <h2>DELETE Requests</h2>
+
+    <h3>Delete a Toy</h3>
+    <pre>
+        <code>DELETE <a class="endpoint-link" id="deleteToyLink" href="#">/toys/{id}</a></code>
+    </pre>
+    <p>Delete a toy by ID. Requires authentication.</p>
+
+    <div class="example-section">
+      <h3>Example Request:</h3>
+      <div class="example">
+        <code>DELETE http://localhost:3001/toys/123456</code>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Example Response:</h3>
+      <div class="example">
+        <pre>
+{
+    "message": "Toy deleted successfully"
+}
+            </pre
+        >
+      </div>
+    </div>
+
+    <script>
+      const baseURL = "https://clock.cyclic.cloud/toys";
+
+      // Update the href attributes of the links with the appropriate URLs
+      document.getElementById("getAllToysLink").href = baseURL;
+      document.getElementById("searchByNameInfoLink").href =
+        baseURL + "/specify/?name={name}&info={info}";
+      document.getElementById("getToysByCategoryLink").href =
+        baseURL + "/category/?catname={categoryName}";
+      document.getElementById("filterByPriceRangeLink").href =
+        baseURL + "/prices/?min={minPrice}&max={maxPrice}";
+      document.getElementById("getToyByIdLink").href = baseURL + "/{id}";
+      document.getElementById("updateToyLink").href = baseURL + "/{id}";
+      document.getElementById("createNewToyLink").href = baseURL;
+      document.getElementById("deleteToyLink").href = baseURL + "/{id}";
+    </script>
+  </body>
+</html>
