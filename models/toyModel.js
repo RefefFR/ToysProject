@@ -17,7 +17,7 @@ let joiSchema = Joi.object({
 name:Joi.string().min(2).max(400).required(),
 info:Joi.string().min(2).max(400).required(),
 category:Joi.string().min(2).max(400).required(),
-img_url:Joi.string().min(2).max(400).allow(""),
+img_url:Joi.string().min(2).max(400).allow(null),
 price:Joi.number().min(1).max(10000).required(),
 })
 return joiSchema.validate(_reqBody)

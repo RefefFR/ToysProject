@@ -1,30 +1,27 @@
-// ספריית אקספרס עם כל היכולות
+// Express library with all the capabilities
 const express = require("express");
-// מבצע מינפולציות על כתובות אינטרנט 
+// Performs internet address manipulations
 const path = require("path");
-// ספרייה שיודעת להפעיל שרת
+// Library that can run a server
 const http = require("http");
 
-
-
-
-const {routesInit} = require("./routes/configRoutes")
-// התחברות למונגו
+const { routesInit } = require("./routes/configRoutes");
+// Connecting to MongoDB
 require("./db/mongoConnect");
 
 const app = express();
 
-// כדי שנוכל לקבל באדי עם ג'ייסון בבקשות פוסט , עריכה ומחיקה
+// To be able to receive JSON in POST, PUT, and DELETE requests
 app.use(express.json());
 
-// מגדיר שתקיית פאבליק וכל הקבצים בה יהיו ציבוריים
+// Defines that the "public" directory and all its files will be public
 app.use(express.static(path.join(__dirname, "public")));
-// פונקציה שאחראית להגדיר את כל הרואטים שנייצר באפלקציית שרת
+
+// Function responsible for defining all the routes in the server application
 routesInit(app);
 
-
 const server = http.createServer(app);
-// בודק באיזה פורט להריץ את השרת  , אם בשרת אמיתי אוסף
-// את המשתנה פורט מהסביבת עבודה שלו ואם לא 3001
+// Checking on which port to run the server, if in a real server it collects
+// the port variable from its environment, otherwise it's 3001
 const port = process.env.PORT || 3001;
 server.listen(port);
